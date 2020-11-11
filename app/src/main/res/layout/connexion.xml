@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <Button
+        android:id="@+id/validate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/connect"
+        android:layout_centerInParent="true"/>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:layout_above="@+id/validate">
+
+        <TableRow>
+            <TextView
+                android:text="@string/pseudo"
+                android:layout_column="1"
+                android:padding="3dip"
+                />
+
+            <EditText
+                android:id="@+id/pseudo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/password"
+                android:layout_column="1"
+                android:padding="3dip"
+                />
+
+            <EditText
+                android:id="@+id/Pseudo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>

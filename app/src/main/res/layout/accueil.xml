@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/type_connexion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/patient"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/patient"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            tools:ignore="ButtonStyle,InvalidId" />
+
+        <Button
+            android:id="@+id/doctor"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/doctor"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_above="@id/type_connexion"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/Accueil"
+        android:padding="3dip"
+        android:gravity="center"
+        android:textSize="38sp"
+        />
+</RelativeLayout>

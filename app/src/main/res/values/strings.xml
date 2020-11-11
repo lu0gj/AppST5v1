@@ -11,4 +11,16 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_profile">Profile</string>
+
+    <string name="profile">Profil</string>
+    <string name="patient">patient</string>
+    <string name="doctor">doctor</string>
+    <string name="Accueil">Salut à toi jeune diabétique</string>
+    <string name="password">mot de passe</string>
+    <string name="pseudo">pseudo</string>
+    <string name="connect">connexion</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="statistique">Statistiques</string>
+    <string name="menu_statistiques">Statistiques</string>
 </resources>

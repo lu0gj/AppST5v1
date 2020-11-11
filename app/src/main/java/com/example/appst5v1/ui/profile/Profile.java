@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.appst5v1.R;
-import com.example.appst5v1.ui.slideshow.SlideshowViewModel;
 
 public class Profile extends Fragment {
 
