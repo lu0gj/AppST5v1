@@ -17,7 +17,6 @@ public class LoadJson {
 
     public static JSONObject Jsonr(String url) {
         MutableLiveData<String> mS = loadJson(url);
-        Handler handler = new Handler();
         JSONObject js = new JSONObject();
         for (int i =0;i<10;i++){
             if (mS.getValue()==null){
