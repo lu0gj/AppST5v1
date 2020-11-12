@@ -37,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/recupMesure.php?id_patient="+id_user);
     }
 
+    public static JSONObject getInfoPatient(){
+        return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/infoPatient.php?id_patient="+id_user)[0];
+    }
+
+
 }
 /*
     @Override
