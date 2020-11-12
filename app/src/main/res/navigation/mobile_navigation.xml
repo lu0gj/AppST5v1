@@ -24,4 +24,6 @@
         android:label="@string/proches"
         tools:layout="@layout/proche_fragment" />
 
+
+
 </navigation>

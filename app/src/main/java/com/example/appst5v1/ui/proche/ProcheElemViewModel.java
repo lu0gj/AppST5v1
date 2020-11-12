@@ -1,0 +1,7 @@
+package com.example.appst5v1.ui.proche;
+
+import androidx.lifecycle.ViewModel;
+
+public class ProcheElemViewModel extends ViewModel {
+
+}
