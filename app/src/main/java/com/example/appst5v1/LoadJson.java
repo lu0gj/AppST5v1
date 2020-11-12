@@ -17,24 +17,23 @@ public class LoadJson {
             MutableLiveData<String> strResult= new MutableLiveData<>();
             final AsyncTask<Void, Void, Void> mTask = new AsyncTask<Void, Void, Void>() {
 
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    strResult.setValue(getJsonFromServer(url));
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                @Override
+                protected Void doInBackground(Void... params) {
+                    try {
+                        strResult.setValue(getJsonFromServer(url));
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    return null;
                 }
-                return null;
-            }
 
-            @Override
-            protected void onPostExecute(Void result) {
-                super.onPostExecute(result);
+                @Override
+                protected void onPostExecute(Void result) {
+                    super.onPostExecute(result);
+                }
 
-            }
-
-        };
+            };
 
         mTask.execute();
         return strResult;

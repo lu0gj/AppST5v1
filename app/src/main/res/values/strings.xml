@@ -21,4 +21,6 @@
     <string name="menu_statistiques">Statistiques</string>
     <string name="callMe">Appel</string>
     <string name="proches">Proches</string>
+    <string name="dark_mode">Sombre</string>
+    <string name="light_mode">Claire</string>
 </resources>
