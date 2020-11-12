@@ -1,5 +1,6 @@
 package com.example.appst5v1.ui.statistiques;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,10 +60,8 @@ public class StatistiquesFragment extends Fragment {
             @Override
             public void run() {
                 // we add 100 new entries
-                for (int i = 0; i < 100; i++) {
-                    System.out.println(getActivity()+"tttttttttttttt");
-                    if (getActivity() ==null){break; }
-                    getActivity().runOnUiThread(new Runnable() {
+                for(Activity myAct = getActivity();myAct!=null;myAct=getActivity()){
+                    myAct.runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {

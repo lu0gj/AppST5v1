@@ -5,7 +5,10 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appst5v1.LoadJson;
 import com.example.appst5v1.R;
+
+import org.json.JSONObject;
 
 
 public class Connexion {
@@ -29,7 +32,10 @@ public class Connexion {
         });
     }
     public void tentative(String pseudo, String mdp){
+        JSONObject js = LoadJson.Jsonr(String.format());
         ActivityManager activityManager = new ActivityManager(appCompatActivity);
         activityManager.launchPagePrincipale();
+
+
     }
 }

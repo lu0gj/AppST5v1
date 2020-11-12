@@ -10,30 +10,54 @@ import java.net.URLConnection;
 
 import androidx.lifecycle.MutableLiveData;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class LoadJson {
 
+    public static JSONObject Jsonr(String url) {
+        MutableLiveData<String> mS = loadJson(url);
+        Handler handler = new Handler();
+        JSONObject js = new JSONObject();
+        for (int i =0;i<10;i++){
+            if (mS.getValue()==null){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                continue;
+            }
+            try {
+                js = new JSONObject(mS.getValue());
+                return js;
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return null;
+    }
 
     public static MutableLiveData<String> loadJson(String url){
             MutableLiveData<String> strResult= new MutableLiveData<>();
             final AsyncTask<Void, Void, Void> mTask = new AsyncTask<Void, Void, Void>() {
 
-                @Override
-                protected Void doInBackground(Void... params) {
-                    try {
-                        strResult.setValue(getJsonFromServer(url));
-                    } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                    return null;
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    strResult.setValue(getJsonFromServer(url));
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
-
-                @Override
-                protected void onPostExecute(Void result) {
-                    super.onPostExecute(result);
-                }
-
-            };
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Void result) {
+                super.onPostExecute(result);
+            }
+        };
 
         mTask.execute();
         return strResult;
