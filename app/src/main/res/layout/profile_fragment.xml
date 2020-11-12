@@ -1,23 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.profile.Profile">
 
     <TextView
-        android:id="@+id/text_profile"
+        android:id="@+id/lastname_profile"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="@dimen/height_item_profile"
+        android:textSize="@dimen/size_font_item_profile"
+        android:text="Lastname"
+        android:drawablePadding="@dimen/margin_item_profile"
+        app:drawableLeftCompat="@drawable/profile_icon" />
+
+    <TextView
+        android:id="@+id/firstname_profile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_item_profile"
+        android:textSize="@dimen/size_font_item_profile"
+        android:text="Firstname"
+        android:drawablePadding="@dimen/margin_item_profile"
+        app:drawableLeftCompat="@drawable/empty_icon" />
+
+
+    <TextView
+        android:id="@+id/email_profile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_item_profile"
+        android:textSize="@dimen/size_font_item_profile"
+        android:text="email"
+        android:drawablePadding="@dimen/margin_item_profile"
+        app:drawableLeftCompat="@drawable/email_icon" />
+
+    <TextView
+        android:id="@+id/phone_profile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_item_profile"
+        android:textSize="@dimen/size_font_item_profile"
+        android:text="Phone"
+        android:drawablePadding="@dimen/margin_item_profile"
+        app:drawableLeftCompat="@drawable/phone_icon" />
+    <TextView
+        android:id="@+id/location_profile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_item_profile"
+        android:textSize="@dimen/size_font_item_profile"
+        android:text="adresse"
+        android:drawablePadding="@dimen/margin_item_profile"
+        app:drawableLeftCompat="@drawable/location_icon" />
+</LinearLayout>
