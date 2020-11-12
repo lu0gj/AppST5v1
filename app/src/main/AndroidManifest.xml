@@ -3,6 +3,8 @@
     package="com.example.appst5v1">
 
     <uses-permission android:name="android.permission.CALL__PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
