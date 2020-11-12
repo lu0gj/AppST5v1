@@ -22,6 +22,10 @@ import com.google.android.material.snackbar.Snackbar;
 public class PagePrincipale extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private int id_user = -1;
+
+    public void setId(int id){this.id_user=id;}
+    public int getId(){return this.id_user;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

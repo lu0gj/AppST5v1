@@ -10,11 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.appst5v1.LoadJson;
 import com.example.appst5v1.R;
+import com.example.appst5v1.ui.PagePrincipale;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Random;
 
@@ -24,9 +29,10 @@ public class StatistiquesFragment extends Fragment {
     private LineGraphSeries<DataPoint> series;
     private int lastX = 0;
     private StatistiquesViewModel mViewModel;
-
+    private final int id = ((PagePrincipale)getActivity()).getId();
     public StatistiquesFragment(){
         super();
+
     }
 
     public static StatistiquesFragment newInstance() {
@@ -38,8 +44,8 @@ public class StatistiquesFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.statistiques_fragment, container, false);
         // data
-        series = new LineGraphSeries<DataPoint>();
-        GraphView graph = (GraphView) rootView.<View>findViewById(R.id.graphstatistique);
+        series = new LineGraphSeries<>();
+        GraphView graph = (GraphView) rootView.findViewById(R.id.graphstatistique);
 
         graph.addSeries(series);
         // customize a little bit viewport
@@ -55,33 +61,28 @@ public class StatistiquesFragment extends Fragment {
     public void onResume() {
         super.onResume();
         // we're going to simulate real time with thread that append data to the graph
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                // we add 100 new entries
-                for(Activity myAct = getActivity();myAct!=null;myAct=getActivity()){
-                    myAct.runOnUiThread(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            addEntry();
-                        }
-                    });
-
-                    // sleep to slow down the add of entries
-                    try {
-                        Thread.sleep(600);
-                    } catch (InterruptedException e) {
-                        // manage error ...
-                    }
+        new Thread(() -> {
+            // we add 100 new entries
+            for(Activity myAct = getActivity();myAct!=null;myAct=getActivity()){
+                myAct.runOnUiThread(() -> addEntry(id));
+                // sleep to slow down the add of entries
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    // manage error ...
                 }
             }
         }).start();
     }
     // add random data to graph
-    private void addEntry() {
+    private void addEntry(int id) {
         // here, we choose to display max 10 points on the viewport and we scroll to end
-        series.appendData(new DataPoint(lastX++, RANDOM.nextDouble() * 10d), false, 10);
+        JSONObject jsonObject= LoadJson.Jsonr(String.format("http://webprog-dev.com/getInfos/recupMesure.php?id_patient=%d",id));
+        try {
+            JSONObject js=jsonObject.getJSONObject(String.valueOf(id));
+            series.appendData(new DataPoint(lastX++, RANDOM.nextDouble() * 10d), false, 10);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

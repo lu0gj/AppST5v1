@@ -56,7 +56,7 @@ public class Connexion {
         }
         System.out.println("Voici l'id"+id);
         if(id > 0){
-            MainActivity.activityManager.launchPagePrincipale();
+            MainActivity.activityManager.launchPagePrincipale(id);
         }
         return -2;
     }

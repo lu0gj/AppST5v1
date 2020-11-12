@@ -21,8 +21,9 @@ public class ActivityManager {
 
     }
 
-    public void launchPagePrincipale(){
+    public void launchPagePrincipale(int id){
         launchActivity(pageprincipale);
+        ((PagePrincipale) actualActivity).setId(id);
     }
     public void launchAccueil(){
         launchActivity(accueil);
