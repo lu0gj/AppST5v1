@@ -10,6 +10,7 @@ public class ActivityManager {
     private final Class accueil = Accueil.class;
     private final Class pageprincipale = PagePrincipale.class;
 
+
     public ActivityManager(Activity activity){
         this.actualActivity=activity;
     }
@@ -23,7 +24,6 @@ public class ActivityManager {
 
     public void launchPagePrincipale(int id){
         launchActivity(pageprincipale);
-        ((PagePrincipale) actualActivity).setId(id);
     }
     public void launchAccueil(){
         launchActivity(accueil);

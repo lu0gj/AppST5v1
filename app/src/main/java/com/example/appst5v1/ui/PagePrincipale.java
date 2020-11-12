@@ -14,18 +14,21 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.appst5v1.LoadJson;
+import com.example.appst5v1.MainActivity;
 import com.example.appst5v1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class PagePrincipale extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private int id_user = -1;
 
-    public void setId(int id){this.id_user=id;}
-    public int getId(){return this.id_user;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

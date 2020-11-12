@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import androidx.lifecycle.MutableLiveData;
@@ -16,15 +17,29 @@ import org.json.JSONObject;
 
 public class LoadJson {
 
-    public static JSONObject Jsonr(String url) {
-
+    public static JSONObject[] getJsonArrayFromUrl(String url) {
         String js = getStringFromUrl(url);
-        try {
-            return new JSONObject(js);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
+        if(js==null) return null;
+        js = js.substring(1,js.length()-1);
+        
+        String[] tab = js.split("[}]," );
+        
+        JSONObject[] res = new JSONObject[tab.length];
+         
+        
+        for(int i = 0;i<res.length;i++){
+            try {
+                if (i != res.length) {
+                    res[i] = new JSONObject(tab[i] + "}");
+                } else {
+                    res[i] = new JSONObject(tab[i]);
+                }
+            }catch(JSONException e){
+                e.printStackTrace();
+                res[i] = null;
+            }
         }
+        return res;
     }
 
     public static String getStringFromUrl(String url) {

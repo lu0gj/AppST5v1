@@ -9,6 +9,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONObject;
+
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public static ActivityManager activityManager;
+    public static int id_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,13 @@ public class MainActivity extends AppCompatActivity {
         activityManager = new ActivityManager(this);
         activityManager.launchAccueil();
     }
-}/*
+
+    public static JSONObject[] getMesures(){
+        return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/recupMesure.php?id_patient="+id_user);
+    }
+
+}
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -54,8 +54,8 @@ public class Connexion {
             e.printStackTrace();
             return -1;
         }
-        System.out.println("Voici l'id"+id);
         if(id > 0){
+            MainActivity.id_user = id;
             MainActivity.activityManager.launchPagePrincipale(id);
         }
         return -2;
