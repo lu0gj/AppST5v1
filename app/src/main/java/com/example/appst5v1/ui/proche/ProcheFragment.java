@@ -37,6 +37,7 @@ public class ProcheFragment extends Fragment {
 
 
 
+
         fragTransaction = fragMan.beginTransaction();
         fragTransaction.add(rootViewContainer.getId(), new ProcheElemFragment("Gégé", "Grand père", "0385904877") , "fragment1");
         fragTransaction.commit();

@@ -9,8 +9,8 @@
 
     <string name="profile">Profil</string>
     <string name="menu_profile">Profil</string>
-    <string name="patient">patient</string>
-    <string name="doctor">doctor</string>
+    <string name="patient">Patient</string>
+    <string name="doctor">Médecin</string>
     <string name="Accueil">Salut à toi jeune diabétique</string>
     <string name="password">mot de passe</string>
     <string name="pseudo">pseudo</string>
