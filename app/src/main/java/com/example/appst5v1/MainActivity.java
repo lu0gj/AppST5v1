@@ -20,11 +20,12 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    public static ActivityManager activityManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityManager activityManager = new ActivityManager(this);
+        activityManager = new ActivityManager(this);
         activityManager.launchAccueil();
     }
 }/*

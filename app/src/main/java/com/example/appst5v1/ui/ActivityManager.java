@@ -2,6 +2,7 @@ package com.example.appst5v1.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 
 
 public class ActivityManager {
@@ -25,5 +26,11 @@ public class ActivityManager {
     }
     public void launchAccueil(){
         launchActivity(accueil);
+    }
+
+    public void  callNumber(String phone_number){
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:"+phone_number));
+        actualActivity.startActivity(callIntent);
     }
 }

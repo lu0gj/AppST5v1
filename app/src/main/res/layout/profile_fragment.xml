@@ -14,7 +14,8 @@
         android:textSize="@dimen/size_font_item_profile"
         android:text="Lastname"
         android:drawablePadding="@dimen/margin_item_profile"
-        app:drawableLeftCompat="@drawable/profile_icon" />
+        app:drawableLeftCompat="@drawable/profile_icon"
+        android:layout_margin="@dimen/margin_item_profile"/>
 
     <TextView
         android:id="@+id/firstname_profile"
@@ -23,7 +24,8 @@
         android:textSize="@dimen/size_font_item_profile"
         android:text="Firstname"
         android:drawablePadding="@dimen/margin_item_profile"
-        app:drawableLeftCompat="@drawable/empty_icon" />
+        app:drawableLeftCompat="@drawable/empty_icon"
+        android:layout_margin="@dimen/margin_item_profile"/>
 
 
     <TextView
@@ -33,16 +35,18 @@
         android:textSize="@dimen/size_font_item_profile"
         android:text="email"
         android:drawablePadding="@dimen/margin_item_profile"
-        app:drawableLeftCompat="@drawable/email_icon" />
+        app:drawableLeftCompat="@drawable/email_icon"
+        android:layout_margin="@dimen/margin_item_profile"/>
 
     <TextView
         android:id="@+id/phone_profile"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_item_profile"
         android:textSize="@dimen/size_font_item_profile"
-        android:text="Phone"
+        android:text="0617019048"
         android:drawablePadding="@dimen/margin_item_profile"
-        app:drawableLeftCompat="@drawable/phone_icon" />
+        app:drawableLeftCompat="@drawable/phone_icon"
+        android:layout_margin="@dimen/margin_item_profile"/>
     <TextView
         android:id="@+id/location_profile"
         android:layout_width="match_parent"
@@ -50,5 +54,19 @@
         android:textSize="@dimen/size_font_item_profile"
         android:text="adresse"
         android:drawablePadding="@dimen/margin_item_profile"
-        app:drawableLeftCompat="@drawable/location_icon" />
+        app:drawableLeftCompat="@drawable/location_icon"
+        android:layout_margin="@dimen/margin_item_profile"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/action_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/size_font_item_profile"
+        android:layout_margin="@dimen/margin_item_profile"
+        android:text="@string/callMe"
+        android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
 </LinearLayout>

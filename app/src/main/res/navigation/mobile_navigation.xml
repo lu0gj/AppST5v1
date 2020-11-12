@@ -16,4 +16,12 @@
         android:name="com.example.appst5v1.ui.statistiques.StatistiquesFragment"
         android:label="@string/menu_statistiques"
         tools:layout="@layout/statistiques_fragment" />
+
+
+    <fragment
+        android:id="@+id/nav_proche"
+        android:name="com.example.appst5v1.ui.proche.ProcheFragment"
+        android:label="@string/proches"
+        tools:layout="@layout/proche_fragment" />
+
 </navigation>
