@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.concurrent.ExecutionException;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -16,50 +17,46 @@ import org.json.JSONObject;
 public class LoadJson {
 
     public static JSONObject Jsonr(String url) {
-        MutableLiveData<String> mS = loadJson(url);
-        JSONObject js = new JSONObject();
-        for (int i =0;i<10;i++){
-            if (mS.getValue()==null){
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                continue;
-            }
-            try {
-                js = new JSONObject(mS.getValue());
-                return js;
-            } catch (JSONException e) {
-                e.printStackTrace();
-                return null;
-            }
+
+        String js = getStringFromUrl(url);
+        try {
+            return new JSONObject(js);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
-    public static MutableLiveData<String> loadJson(String url){
-            MutableLiveData<String> strResult= new MutableLiveData<>();
-            final AsyncTask<Void, Void, Void> mTask = new AsyncTask<Void, Void, Void>() {
+    public static String getStringFromUrl(String url) {
+        return loadJson(url);
+    }
+
+
+    public static String loadJson(String url){
+            final AsyncTask<Void, Void, String> mTask = new AsyncTask<Void, Void, String>() {
 
             @Override
-            protected Void doInBackground(Void... params) {
+            protected String doInBackground(Void... params) {
                 try {
-                    strResult.setValue(getJsonFromServer(url));
+                    return getJsonFromServer(url);
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 return null;
             }
-            @Override
-            protected void onPostExecute(Void result) {
-                super.onPostExecute(result);
-            }
         };
 
-        mTask.execute();
-        return strResult;
+
+        try {
+            return mTask.execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return null;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static String getJsonFromServer(String url) throws IOException {
@@ -76,11 +73,11 @@ public class LoadJson {
                 dc.getInputStream()));
 
         // read the JSON results into a string
-        String jsonResult = inputStream.readLine();
-        for(int i = 0; i<10;i++){
-            jsonResult+=inputStream.readLine();
+        String finalResult = "";
+        for(String result = inputStream.readLine();result !=null; result = inputStream.readLine()){
+            finalResult+=result;
         }
 
-        return jsonResult;
+        return finalResult;
     }
 }

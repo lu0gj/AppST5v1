@@ -23,4 +23,7 @@
     <string name="proches">Proches</string>
     <string name="dark_mode">Sombre</string>
     <string name="light_mode">Claire</string>
+
+    <string name="errorCon">Erreur de communication avec le server (internet ?)</string>
+    <string name="wrongEmail">Le mot de passe ou l\'adresse email est incorrect.</string>
 </resources>

@@ -12,6 +12,7 @@
         android:layout_centerInParent="true"/>
 
     <TableLayout
+        android:id="@+id/pseudo_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:stretchColumns="1"
@@ -50,10 +51,11 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/verif"
+        android:id="@+id/error_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/validate"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/pseudo_pass"
+        android:textColor="?colorError"/>
 
 </RelativeLayout>
