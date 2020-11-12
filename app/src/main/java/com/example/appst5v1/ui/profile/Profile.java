@@ -36,7 +36,6 @@ public class Profile extends Fragment {
             public void onClick(View arg0) {
                 MainActivity.activityManager.callNumber( ((TextView) root.findViewById(R.id.phone_profile)).getText().toString());
             }
-
         });
         return root;
 
