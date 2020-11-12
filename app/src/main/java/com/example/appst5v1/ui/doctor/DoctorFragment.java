@@ -33,14 +33,10 @@ public class DoctorFragment extends Fragment {
         mViewModel =
                 new ViewModelProvider(this).get(DoctorViewModel.class);
 
-        View root = inflater.inflate(R.layout.layout_test, container, false);
-        str = "Echec critique";
-        final TextView text = (TextView) root.findViewById(R.id.simple_textview);
 
+        View root = inflater.inflate(R.layout.profile_fragment, container, false);
 
-        /*View root = inflater.inflate(R.layout.profile_fragment, container, false);
-
-        ((TextView) root.findViewById(R.id.firstname_profile)).setText("Médecin");
+        ((TextView) root.findViewById(R.id.firstname_profile)).setText(R.string.doctor);
 
         Button butCall = (Button) root.findViewById(R.id.action_call);
         butCall.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +46,7 @@ public class DoctorFragment extends Fragment {
                 MainActivity.activityManager.callNumber( ((TextView) root.findViewById(R.id.phone_profile)).getText().toString());
             }
 
-        });*/
+        });
         return root;
 
     }
