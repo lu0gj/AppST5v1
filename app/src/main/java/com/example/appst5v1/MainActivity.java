@@ -1,36 +1,25 @@
 package com.example.appst5v1;
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.Menu;
 
 import com.example.appst5v1.ui.ActivityManager;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONObject;
 
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public static ActivityManager activityManager;
-    public static int id_user;
+    public static int id_user = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityManager = new ActivityManager(this);
-        activityManager.launchAccueil();
+        activityManager.launchPagePrincipale(1);
     }
 
     public static JSONObject[] getMesures(){
@@ -40,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
     public static JSONObject getInfoPatient(){
         return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/infoPatient.php?id_patient="+id_user)[0];
     }
+
+    public static JSONObject[] getinfoProche(){
+        return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/recupProche.php?id_patient"+id_user);
+    }
+
+    public static JSONObject getinfomedecin(){
+        return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/donneeMedecinPatient.php?id_patient="+id_user)[0];
+    }
+
 
 
 }
