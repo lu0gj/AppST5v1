@@ -45,8 +45,7 @@ public class DoctorFragment extends Fragment {
             ((TextView)root2.findViewById(R.id.text_layout_error)).setText(R.string.doctor_dont_load);
             return root2;
         }
-
-        View root = inflater.inflate(R.layout.profile_fragment, container, false);
+        View root = inflater.inflate(R.layout.medecin_fragment, container, false);
         try {
             ((TextView) root.findViewById(R.id.firstname_profile)).setText(info_user.getString("prenom"));
             ((TextView) root.findViewById(R.id.lastname_profile)).setText(info_user.getString("nom"));
@@ -69,7 +68,4 @@ public class DoctorFragment extends Fragment {
         return root;
 
     }
-
-
-
 }

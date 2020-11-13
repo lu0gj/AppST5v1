@@ -119,19 +119,18 @@ public class StatistiquesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // we're going to simulate real time with thread that append data to the graph
-        /*new Thread(() -> {
+        new Thread(() -> {
             // we add 100 new entries
             for(Activity myAct = getActivity();myAct!=null;myAct=getActivity()){
-                myAct.runOnUiThread(() -> addEntry());
-                // sleep to slow down the add of entries
+
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(1000);
+                    getFragmentManager().beginTransaction().detach(this).attach(this).commit();
                 } catch (InterruptedException e) {
-                    // manage error ...
+                    System.out.println("tttttttttttttttttttttttttttttttttttttttttttttt");
                 }
             }
-        }).start();*/
+        }).start();
     }
 
     class MyDataPoint extends DataPoint implements Comparable{

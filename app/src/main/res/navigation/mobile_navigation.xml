@@ -17,7 +17,6 @@
         android:label="@string/menu_statistiques"
         tools:layout="@layout/statistiques_fragment" />
 
-
     <fragment
         android:id="@+id/nav_proche"
         android:name="com.example.appst5v1.ui.proche.ProcheFragment"
@@ -28,6 +27,6 @@
         android:id="@+id/nav_doctor"
         android:name="com.example.appst5v1.ui.doctor.DoctorFragment"
         android:label="@string/doctor"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/medecin_fragment" />
 
 </navigation>
