@@ -17,12 +17,14 @@ import com.example.appst5v1.ui.ActivityManager;
 import com.example.appst5v1.ui.PagePrincipale;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.Viewport;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
 import java.util.Random;
 
 public class StatistiquesFragment extends Fragment {
@@ -47,16 +49,42 @@ public class StatistiquesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.statistiques_fragment, container, false);
         // data
 
-        System.out.println(MainActivity.getMesures()+" ----------------- ");
-        series = new LineGraphSeries<>();
+
         GraphView graph = (GraphView) rootView.findViewById(R.id.graphstatistique);
 
+        JSONObject[] list_mesures = MainActivity.getMesures();
+        if(list_mesures == null){
+            System.out.println("Aucune mesures");
+            return rootView;
+        }
+
+        DataPoint[] datas = new DataPoint[list_mesures.length];
+
+
+        for(int i = 0; i<datas.length;i++){
+            try {
+                String[] date = list_mesures[i].getString("date_prise").split("-");
+                Date datePrise = new Date(Integer.parseInt(date[2])-1900, Integer.parseInt(date[1]), Integer.parseInt(date[0]), Integer.parseInt(date[3]),Integer.parseInt(date[4]), Integer.parseInt(date[5]));
+                int niv_gly = list_mesures[i].getInt("niveau_glycemine");
+                datas[i] = new DataPoint(datePrise,niv_gly);
+            }catch(JSONException e){
+                e.printStackTrace();
+            }
+        }
+        series = new LineGraphSeries<>(datas);
         graph.addSeries(series);
+
+        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity()));
+
+
+
+
         // customize a little bit viewport
         Viewport viewport = graph.getViewport();
         viewport.setYAxisBoundsManual(true);
-        viewport.setMinY(30);
-        viewport.setMaxY(200);
+        //viewport.setMinY(30);
+        //viewport.setMaxY(200);
+
         viewport.setScrollable(true);
         return rootView;
     }
@@ -65,7 +93,7 @@ public class StatistiquesFragment extends Fragment {
     public void onResume() {
         super.onResume();
         // we're going to simulate real time with thread that append data to the graph
-        new Thread(() -> {
+        /*new Thread(() -> {
             // we add 100 new entries
             for(Activity myAct = getActivity();myAct!=null;myAct=getActivity()){
                 myAct.runOnUiThread(() -> addEntry());
@@ -76,12 +104,12 @@ public class StatistiquesFragment extends Fragment {
                     // manage error ...
                 }
             }
-        }).start();
+        }).start();*/
     }
     // add random data to graph
     private void addEntry() {
         // here, we choose to display max 10 points on the viewport and we scroll to end
-        System.out.println(i+"zaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
         JSONObject jsonObject= MainActivity.getMesures()[i];
         try {
             String date = jsonObject.getString("date_prise");
