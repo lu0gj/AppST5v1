@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityManager = new ActivityManager(this);
+        //activityManager.launchAccueil();
         activityManager.launchPagePrincipale(1);
     }
 
@@ -27,15 +28,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static JSONObject getInfoPatient(){
-        return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/infoPatient.php?id_patient="+id_user)[0];
+        JSONObject[] res = LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/infoPatient.php?id_patient="+id_user);
+        if(res!= null && res.length>0)
+            return res[0];
+        return null;
     }
 
     public static JSONObject[] getinfoProche(){
-        return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/recupProche.php?id_patient"+id_user);
+        return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/recupProche.php?id_patient="+id_user);
     }
 
     public static JSONObject getinfomedecin(){
-        return LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/donneeMedecinPatient.php?id_patient="+id_user)[0];
+        JSONObject[] res = LoadJson.getJsonArrayFromUrl("http://webprog-dev.com/getInfos/donneeMedecinPatient.php?id_patient="+id_user);
+        if(res!= null && res.length>0)
+            return res[0];
+        return null;
     }
 
 

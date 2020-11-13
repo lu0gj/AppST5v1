@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.appst5v1.MainActivity;
 import com.example.appst5v1.R;
 import com.example.appst5v1.ui.ActivityManager;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,9 +31,15 @@ public class Profile extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         mViewModel =
                 new ViewModelProvider(this).get(ProfileViewModel.class);
-        View root = inflater.inflate(R.layout.profile_fragment, container, false);
 
         JSONObject info_user = MainActivity.getInfoPatient();
+        if(info_user == null) {
+            View root2 = inflater.inflate(R.layout.layout_error, container, false);
+            ((TextView)root2.findViewById(R.id.text_layout_error)).setText(R.string.profile_dont_load);
+            return root2;
+        }
+
+        View root = inflater.inflate(R.layout.profile_fragment, container, false);
         try {
             ((TextView) root.findViewById(R.id.firstname_profile)).setText(info_user.getString("prenom"));
             ((TextView) root.findViewById(R.id.lastname_profile)).setText(info_user.getString("nom"));

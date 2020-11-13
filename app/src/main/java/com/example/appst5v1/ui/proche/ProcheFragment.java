@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.appst5v1.MainActivity;
 import com.example.appst5v1.R;
@@ -26,6 +27,15 @@ public class ProcheFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         mViewModel =
                 new ViewModelProvider(this).get(ProcheViewModel.class);
+
+        JSONObject[] info_proches = MainActivity.getinfoProche();
+
+        if(info_proches == null) {
+            View root2 = inflater.inflate(R.layout.layout_error, container, false);
+            ((TextView)root2.findViewById(R.id.text_layout_error)).setText(R.string.aucun_proche);
+            return root2;
+        }
+
         View root = inflater.inflate(R.layout.proche_fragment, container, false);
 
 
@@ -35,19 +45,19 @@ public class ProcheFragment extends Fragment {
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTransaction;
 
-        JSONObject[] info_user = MainActivity.getinfoProche();
-        for (JSONObject js :info_user) {
+
+        for (JSONObject js :info_proches) {
             try {
                 String name = js.getString("nom");
                 String lien = js.getString("lien");
                 String phone = js.getString("tel");
+                fragTransaction = fragMan.beginTransaction();
+                fragTransaction.add(rootViewContainer.getId(), new ProcheElemFragment(name, lien, phone), "fragment");
+                fragTransaction.commit();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            fragTransaction = fragMan.beginTransaction();
-            fragTransaction.add(rootViewContainer.getId(), new ProcheElemFragment("Gégé", "Grand père", "0385904877"), "fragment1");
-            fragTransaction.commit();
         }
 
         return root;

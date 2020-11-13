@@ -4,9 +4,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/simple_textview"
+        android:id="@+id/text_layout_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Ceci est un test"/>
+        android:textSize="60sp"
+        android:text=""/>
 </RelativeLayout>

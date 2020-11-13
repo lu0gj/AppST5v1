@@ -8,5 +8,5 @@
     <dimen name="icon_size">50sp</dimen>
     <dimen name="height_item_profile">60sp</dimen>
     <dimen name="margin_item_profile">15dp</dimen>
-    <dimen name="size_font_item_profile">40sp</dimen>
+    <dimen name="size_font_item_profile">30sp</dimen>
 </resources>

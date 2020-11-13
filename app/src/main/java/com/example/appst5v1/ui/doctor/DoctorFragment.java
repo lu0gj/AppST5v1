@@ -12,6 +12,10 @@ import android.widget.TextView;
 import com.example.appst5v1.MainActivity;
 import com.example.appst5v1.R;
 import com.example.appst5v1.ui.profile.ProfileViewModel;
+import com.google.android.material.snackbar.Snackbar;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,9 +38,24 @@ public class DoctorFragment extends Fragment {
                 new ViewModelProvider(this).get(DoctorViewModel.class);
 
 
-        View root = inflater.inflate(R.layout.profile_fragment, container, false);
 
-        ((TextView) root.findViewById(R.id.firstname_profile)).setText(R.string.doctor);
+        JSONObject info_user = MainActivity.getinfomedecin();
+        if(info_user == null) {
+            View root2 = inflater.inflate(R.layout.layout_error, container, false);
+            ((TextView)root2.findViewById(R.id.text_layout_error)).setText(R.string.doctor_dont_load);
+            return root2;
+        }
+
+        View root = inflater.inflate(R.layout.profile_fragment, container, false);
+        try {
+            ((TextView) root.findViewById(R.id.firstname_profile)).setText(info_user.getString("prenom"));
+            ((TextView) root.findViewById(R.id.lastname_profile)).setText(info_user.getString("nom"));
+            ((TextView) root.findViewById(R.id.email_profile)).setText(info_user.getString("email"));
+            ((TextView) root.findViewById(R.id.phone_profile)).setText(info_user.getString("tel"));
+            ((TextView) root.findViewById(R.id.location_profile)).setText(info_user.getString("adresse"));
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         Button butCall = (Button) root.findViewById(R.id.action_call);
         butCall.setOnClickListener(new View.OnClickListener() {

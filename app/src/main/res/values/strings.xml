@@ -26,4 +26,8 @@
 
     <string name="errorCon">Erreur de communication avec le server (internet ?)</string>
     <string name="wrongEmail">Le mot de passe ou l\'adresse email est incorrect.</string>
+    <string name="profile_dont_load">Le profile ne charge pas</string>
+    <string name="doctor_dont_load">Le profile du médecin ne charge pas.</string>
+    <string name="stats_dont_load">Les données ne charges pas.</string>
+    <string name="aucun_proche">Aucun proche.</string>
 </resources>

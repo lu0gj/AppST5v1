@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/lastname_profile"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_item_profile"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/size_font_item_profile"
         android:text="Lastname"
         android:drawablePadding="@dimen/margin_item_profile"
@@ -20,7 +20,7 @@
     <TextView
         android:id="@+id/firstname_profile"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_item_profile"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/size_font_item_profile"
         android:text="Firstname"
         android:drawablePadding="@dimen/margin_item_profile"
@@ -31,7 +31,7 @@
     <TextView
         android:id="@+id/email_profile"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_item_profile"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/size_font_item_profile"
         android:text="email"
         android:drawablePadding="@dimen/margin_item_profile"
@@ -41,7 +41,7 @@
     <TextView
         android:id="@+id/phone_profile"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_item_profile"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/size_font_item_profile"
         android:text="0617019048"
         android:drawablePadding="@dimen/margin_item_profile"
@@ -50,7 +50,7 @@
     <TextView
         android:id="@+id/location_profile"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_item_profile"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/size_font_item_profile"
         android:text="adresse"
         android:drawablePadding="@dimen/margin_item_profile"

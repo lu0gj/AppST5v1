@@ -57,6 +57,7 @@ public class Connexion {
         if(id > 0){
             MainActivity.id_user = id;
             MainActivity.activityManager.launchPagePrincipale(id);
+            return id;
         }
         return -2;
     }

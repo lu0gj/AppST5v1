@@ -19,7 +19,7 @@ public class LoadJson {
 
     public static JSONObject[] getJsonArrayFromUrl(String url) {
         String js = getStringFromUrl(url);
-        if(js==null) return null;
+        if(js==null || js.equals("")) return null;
         js = js.substring(1,js.length()-1);
         
         String[] tab = js.split("[}]," );
